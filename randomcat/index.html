@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Random Cat Image</title>
+  </head>
+  <body>
+    <h1>Random Cat Image</h1>
+    <div id="image-container"></div>
+    <script>
+        const url = `https://api.thecatapi.com/v1/images/search?limit=1`;
+        fetch(url)
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                let imagesData = data;
+                imagesData.map(function(imageData) {
+                let image = document.createElement('img');
+                //use the url from the image object
+                image.src = `${imageData.url}`;
+                const container = document.getElementById("image-container");
+                container.appendChild(image);
+    
+    });
+})
+.catch(function(error) {
+   console.log(error);
+});
+    </script>
+  </body>
+</html>
